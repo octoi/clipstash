@@ -1,3 +1,5 @@
+pub mod model;
+
 use derive_more::{Display, From};
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;

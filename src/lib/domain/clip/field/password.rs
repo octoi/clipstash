@@ -14,7 +14,7 @@ impl Password {
                 if !password.trim().is_empty() {
                     Ok(Self(Some(password)))
                 } else {
-                    Ok(Self(Some(None)))
+                    Ok(Self(None))
                 }
             },
             None => Ok(Self(None))

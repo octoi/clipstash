@@ -48,3 +48,25 @@ pub async fn new_clip<M: Into<model::NewClip>>(
     ).execute(pool).await?;
     get_clip(model.shortcode, pool).await
 }
+
+pub async fn update_clip<M: Into<model::UpdateClip>> (
+    model: M,
+    pool: &DatabasePool
+) -> Result<model::Clip> {
+    let model = model.into();
+    let _ = sqlx::query!(
+        r#"UPDATE clips SET
+            content = ?,
+            expires = ?,
+            password = ?,
+            title = ?
+           WHERE shortcode = ?
+        "#,
+        model.content,
+        model.expires,
+        model.password,
+        model.title,
+        model.shortcode,
+    ).execute(pool).await?;
+    get_clip(model.shortcode, pool).await
+}

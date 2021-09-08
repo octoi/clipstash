@@ -1,6 +1,5 @@
 use derive_more::Constructor;
 use serde::{ Deserialize, Serialize };
-use super::ClipError;
 use crate::domain::clip::ClipError;
 
 #[derive(Clone, Constructor, Debug, Deserialize, Serialize)]

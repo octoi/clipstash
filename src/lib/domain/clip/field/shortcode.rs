@@ -1,4 +1,3 @@
-use super::ClipError;
 use derive_more::From;
 use crate::domain::clip::ClipError;
 use serde::{ Deserialize, Serialize };

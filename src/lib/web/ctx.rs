@@ -20,11 +20,9 @@ impl PageContext for Home {
     fn title(&self) -> &str {
         "Stash Your Clipboard"
     }
-
     fn template_path(&self) -> &str {
         "home"
     }
-
     fn parent(&self) -> &str {
         "base"
     }
@@ -39,11 +37,9 @@ impl PageContext for ViewClip {
     fn title(&self) -> &str {
         "View Clip"
     }
-
     fn template_path(&self) -> &str {
         "clip"
     }
-
     fn parent(&self) -> &str {
         "base"
     }
@@ -58,11 +54,9 @@ impl PageContext for PasswordRequired {
     fn title(&self) -> &str {
         "Password Required"
     }
-
     fn template_path(&self) -> &str {
         "clip_need_password"
     }
-
     fn parent(&self) -> &str {
         "base"
     }

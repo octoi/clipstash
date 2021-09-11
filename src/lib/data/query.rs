@@ -6,7 +6,7 @@ use sqlx::Row;
 type Result<T> = std::result::Result<T, DataError>;
 
 pub async fn increase_hit_count(
-    shortcode: ShortCode,
+    shortcode: &ShortCode,
     hits: u32,
     pool: &DatabasePool,
 ) -> Result<()> {

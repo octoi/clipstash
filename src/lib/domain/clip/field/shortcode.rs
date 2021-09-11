@@ -5,7 +5,7 @@ use std::str::FromStr;
 use rocket::request::FromParam;
 use rocket::{UriDisplayPath, UriDisplayQuery};
 
-#[derive(Debug, Clone, Deserialize, Serialize, From, UriDisplayPath, UriDisplayQuery)]
+#[derive(Debug, Clone, Deserialize, Serialize, From, UriDisplayPath, UriDisplayQuery, Hash, Eq, PartialEq)]
 pub struct ShortCode(String);
 
 impl ShortCode {

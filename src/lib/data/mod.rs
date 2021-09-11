@@ -15,7 +15,7 @@ pub enum DataError {
 
 pub type AppDatabase = Database<Sqlite>;
 pub type DatabasePool = sqlx::SqlitePool;
-pub type TransactionType<'t> = sqlx::Transaction<'t, Sqlite>;
+pub type Transaction<'t> = sqlx::Transaction<'t, Sqlite>;
 pub type AppDatabaseRow = sqlx::sqlite::SqliteRow;
 pub type AppQueryResult = sqlx::sqlite::SqliteQueryResult;
 

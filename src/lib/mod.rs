@@ -14,7 +14,6 @@ use crate::data::AppDatabase;
 use rocket::fs::FileServer;
 use rocket::{Build, Rocket};
 use crate::web::renderer::Renderer;
-use crate::web::hitcounter;
 use crate::web::hitcounter::HitCounter;
 
 pub fn rocket(config: RocketConfig) -> Rocket<Build> {

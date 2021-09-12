@@ -144,11 +144,11 @@ pub mod test {
     use crate::data::*;
     use crate::test::async_runtime;
 
-    fn model_get_clip(shortcode: &str) -> model::GetClip {
-        model::GetClip {
-            shortcode: shortcode.into()
-        }
-    }
+    // fn model_get_clip(shortcode: &str) -> model::GetClip {
+    //     model::GetClip {
+    //         shortcode: shortcode.into()
+    //     }
+    // }
 
     fn model_new_clip(shortcode: &str) -> model::NewClip {
         use chrono::Utc;

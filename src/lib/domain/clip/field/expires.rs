@@ -1,7 +1,7 @@
 use crate::domain::clip::ClipError;
 use crate::domain::time::Time;
 use serde::{ Deserialize, Serialize };
-use rocket::form::{self, FromFormField, ValueField, DataField};
+use rocket::form::{self, FromFormField, ValueField};
 use std::str::FromStr;
 
 #[derive(Clone, Debug, Deserialize, Serialize)]

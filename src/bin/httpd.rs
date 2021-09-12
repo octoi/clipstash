@@ -1,5 +1,5 @@
 use clipstash::data::AppDatabase;
-// use clipstash::domain::maintenance::Maintenance;
+use clipstash::domain::maintenance::Maintenance;
 use clipstash::web::{renderer::Renderer, hitcounter::HitCounter};
 use dotenv::dotenv;
 use std::path::PathBuf;
@@ -28,11 +28,13 @@ fn main() {
     });
 
     let hit_counter = HitCounter::new(database.get_pool().clone(), handle.clone());
+    let maintenance = Maintenance::spawn(database.get_pool().clone(), handle.clone());
 
     let config = clipstash::RocketConfig {
         renderer,
         database,
-        hit_counter
+        hit_counter,
+        maintenance
     };
 
     rt.block_on(async move {

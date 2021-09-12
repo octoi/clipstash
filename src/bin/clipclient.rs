@@ -70,6 +70,14 @@ fn new_clip(addr: &str, ask_svc: NewClip, api_key: ApiKey) -> Result<Clip, Box<d
     Ok(request.json(&ask_svc).send()?.json()?)
 }
 
+fn update_clip(addr: &str, ask_svc: UpdateClip, api_key: ApiKey) -> Result<Clip, Box<dyn Error>> {
+    let client = reqwest::blocking::Client::builder().build()?;
+    let addr = format!("{}/api/clip", addr);
+    let mut request = client.put(addr);
+    request = request.header(API_KEY_HEADER, api_key.to_base64());
+    Ok(request.json(&ask_svc).send()?.json()?)
+}
+
 fn run(opt: Opt) -> Result<(), Box<dyn Error>> {
     match opt.command {
         Command::Get { shortcode, password } => {
@@ -93,7 +101,22 @@ fn run(opt: Opt) -> Result<(), Box<dyn Error>> {
             Ok(())
         }
         Command::Update { clip, password, expires, title, shortcode } => {
-            todo!()
+            let password = password.unwrap_or_default();
+            let svc_req = GetClip {
+                password: password.clone(),
+                shortcode: shortcode.clone(),
+            };
+            let original_clip = get_clip(opt.addr.as_str(), svc_req, opt.api_key.clone())?;
+            let svc_req = UpdateClip {
+                content: Content::new(clip.as_str())?,
+                expires: expires.unwrap_or(original_clip.expires),
+                title: title.unwrap_or(original_clip.title),
+                password,
+                shortcode
+            };
+            let clip = update_clip(opt.addr.as_str(), svc_req, opt.api_key)?;
+            println!("{:#?}", clip);
+            Ok(())
         },
     }
 }

@@ -14,7 +14,13 @@ $ cargo install sqlx-cli
 $ sqlx database setup
 ```
 ```bash
-$ cargo run
+# run server
+$ cargo run --bin httpd
+# access website on http://localhost:8000
+
+# run API client (cli)
+$ cargo run --bin clipclient
+# pass arguments by `cargo run --bin clipclient -- {args}`
 ```
 
 WIP [ please don't run :) ]

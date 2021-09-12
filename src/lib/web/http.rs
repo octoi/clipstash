@@ -1,7 +1,7 @@
 use crate::data::AppDatabase;
 use crate::service;
 use crate::service::{action, ask};
-use crate::web::{ctx, form, renderer::RenderError, PageError, PASSWORD_COOKIE};
+use crate::web::{ctx, form, PageError, PASSWORD_COOKIE};
 use crate::{ServiceError, ShortCode};
 use rocket::form::{Contextual, Form};
 use rocket::http::{Cookie, CookieJar, Status};
